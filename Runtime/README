@@ -27,7 +27,7 @@ o	You would see Qt Creator IDE window open
 o	Add import startement for Esri ArcGIS Runtime on the top of the page next to other import statements
 
 
-import Esri.ArcGISRuntime 100.1
+```         import Esri.ArcGISRuntime 100.1
 
 
 
