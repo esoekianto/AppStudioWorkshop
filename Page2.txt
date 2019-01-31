@@ -1,0 +1,83 @@
+import QtQuick 2.7
+import QtQuick.Controls 2.2
+import QtQuick.Controls.Material 2.2
+import QtQuick.Layouts 1.3
+
+import ArcGIS.AppFramework 1.0
+import ArcGIS.AppFramework.Controls 1.0
+
+import Esri.ArcGISRuntime 100.2
+
+Page {
+//    Material.theme: Material.Dark
+
+    header: ToolBar {
+        width: parent.width
+        height: 56 * scaleFactor
+
+        Material.primary: Material.Orange
+        Material.elevation: 10
+
+        RowLayout {
+            anchors.fill: parent
+            spacing: 8 * app.scaleFactor
+
+            // Side menu button
+            ToolButton {
+                indicator: Image{
+                    width: parent.width*0.5
+                    height: parent.height*0.5
+                    anchors.centerIn: parent
+                    source: sources.backIcon
+                    fillMode: Image.PreserveAspectFit
+                    mipmap: true
+                }
+            }
+
+            // Page title
+            Label {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                horizontalAlignment: Label.AlignLeft
+                verticalAlignment: Label.AlignVCenter
+
+                text: qsTr("Map")
+                font.pixelSize: fonts.titleFont.pixelSize
+                font.family: fonts.titleFont.fontFamily.name
+                color: colors.white_100
+            }
+        }
+    }
+
+    MapView{
+        anchors.fill: parent
+
+        Map {
+            initUrl: "http://www.arcgis.com/home/item.html?id=0f469011a580418e962de875e354fa9a"
+        }
+    }
+
+    RoundButton{
+        width: radius*2
+        height: width
+        radius: 32*app.scaleFactor
+        anchors {
+            right: parent.right
+            bottom: parent.bottom
+            rightMargin:20 * scaleFactor
+            bottomMargin: 50 * scaleFactor
+        }
+        Material.elevation: 6
+        Material.background: Material.Orange
+        contentItem: Image {
+            width: parent.radius
+            height: width
+            mipmap: true
+            source: sources.infoIcon
+        }
+
+        onClicked: {
+            // TODO: appframework plugins
+        }
+    }
+}
